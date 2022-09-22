@@ -3,24 +3,26 @@ import './App.css';
 import ItemListContainer from './components/shopping/ItemListContainer';
 import Footer from './components/Footer';
 
-const h1Style = {fontSize: '50px', padding: '20px'}
-
 function App() {
   return (
     <>
-    <NavBar/>
-      <div className="App">
+      <NavBar />
+      <div className="App min-h-screen">
         <header>
-          <h1 style={h1Style}><strong>
-            Welcome!
-          </strong></h1>
+        <main>
+          <span className='h1Span my-5 mx-auto'>
+            <h1>chic store</h1>
+          </span>
+        </main>
           <br></br>
-          <ItemListContainer greeting='¡Saludos desde List Container!'/>
+          <div className="card m-auto w-96 bg-base-200 shadow-xl py-2 mb-10">
+            <div className="card-body">
+              <ItemListContainer greeting='¡Saludos desde List Container!' />
+            </div>
+          </div>
         </header>
       </div>
-    <footer>
-      <Footer/>
-    </footer>
+      <Footer />
     </>
   );
 }

@@ -15,3 +15,47 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+main {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: 'Fira Code', monospace;
+  position: relative;
+  display: inline-block;
+  font-size: 3rem;
+  background: linear-gradient(to bottom, #000, #000 60%, #fff 60%, #fff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-repeat: no-repeat;
+  transition: 0.2s ease-out;
+  white-space: nowrap;
+}
+
+.h1Span {
+  position: relative;
+}
+
+.h1Span:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  background: #000;
+  bottom: 13px;
+  transition: all 0.2s ease-out;
+}
+
+h1:hover {
+  background-position: 0 11px;
+}
+
+.h1Span:hover:before {
+  transform: translateY(10px)
+}
