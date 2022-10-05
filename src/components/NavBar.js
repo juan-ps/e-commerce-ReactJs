@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom"
+import LogoText from "./design/LogoText"
+
 const NavBar = () => {
     return (
         <div className="navbar bg-neutral-content">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">Home</a>
+                <LogoText/>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
@@ -17,7 +20,7 @@ const NavBar = () => {
                             <span className="font-bold text-lg">8 Items</span>
                             <span className="text-info">Subtotal: $999</span>
                             <div className="card-actions">
-                                <button className="btn btn-primary btn-block">View cart</button>
+                                <Link to={'/cart'} className="btn btn-primary btn-block">View cart</Link>
                             </div>
                         </div>
                     </div>
@@ -30,14 +33,14 @@ const NavBar = () => {
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
-                            <a className="justify-between">
-                                Profile
+                            <Link to={'/itemlist'} className="justify-between">
+                                Lista de Productos
                                 <span className="badge">New</span>
-                            </a>
+                            </Link>
                         </li>
-                        <li><a>Settings</a></li>
+{/*                         <li><a>Settings</a></li>
                         <li><a>Logout</a></li>
-                    </ul>
+ */}                    </ul>
                 </div>
             </div>
         </div>

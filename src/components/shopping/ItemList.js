@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { products } from "./data/products"
 import { Link } from "react-router-dom"
-import SearchSidebar from "./SearchSidebar"
 import Loader from "../design/Loader"
 
 export const ItemCard = ({ id, name, price, image }) => {
@@ -40,7 +39,7 @@ export const ItemCard = ({ id, name, price, image }) => {
     )
 }
 
-const ItemListContainer = () => {
+const ItemList = () => {
 
     const [loading, setLoading] = useState(true)
     const [items, setItems] = useState([])
@@ -57,28 +56,20 @@ const ItemListContainer = () => {
         return new Promise(res => {
             setTimeout(() => {
                 res(products)
-            }, 1500);
+            }, 3000);
         })
     }
 
     return (
         <>
-            <div className="text-5xl font-bold mx-auto my-5 text-center">
-                <p>LISTA DE PRODUCTOS</p>
-            </div>
-            <div className="container min-h-screen mx-auto my-5 grid grid-cols-2 md:grid-cols-3 md:px-8 lg:grid-cols-5 gap-5">
-                <div>
-                    <SearchSidebar/>
+            {loading ? <div className="min-h-screen"><Loader /></div> :
+                <div className="container mx-auto my-5">
+                    <div className="container grid grid-cols-2 md:grid-cols-2 md:px-8 lg:grid-cols-4 gap-10 mx-auto justify-evenly">
+                        {items.map(i => <ItemCard key={i.id} {...i} />)}
+                    </div>
                 </div>
-                {loading ? <div className="col-span-1 md:col-span-2 lg:col-span-4"><Loader /></div> : 
-                <div className="container col-span-1 md:col-span-2 lg:col-span-4 grid grid-cols-1 md:px-4 lg:grid-cols-3 gap-5 mx-auto justify-evenly">
-                
-                    {items.map(i => <ItemCard key={i.id} {...i} />)}
-                </div>
-                }
-            </div>
+            }
         </>
     )
 }
-
-export default ItemListContainer
+export default ItemList

@@ -1,28 +1,29 @@
 import NavBar from './components/NavBar';
 import './App.css';
-import ItemListContainer from './components/shopping/ItemListContainer';
+import ItemDetailContainer from './components/shopping/ItemDetailContainer';
 import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CartWidget from './components/shopping/CartWidget';
+import ErrorPage from './components/ErrorPage';
+import ItemList from './components/shopping/ItemList';
+import ItemListContainer from './components/shopping/ItemListContainer';
 
 function App() {
   return (
     <>
-      <NavBar />
-      <div className="App min-h-screen">
-        <header>
-        <main>
-          <span className='h1Span my-5 mx-auto'>
-            <h1>chic store</h1>
-          </span>
-        </main>
-          <br></br>
-          <div className="card m-auto w-96 bg-base-200 shadow-xl py-2 mb-10">
-            <div className="card-body">
-              <ItemListContainer greeting='¡Saludos desde List Container!' />
-            </div>
-          </div>
-        </header>
+      <div className="App min-h-screen font-crim">
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path={'/'} element={< ItemList />} />
+            <Route path={'/itemlist'} element={<ItemListContainer />} />
+            <Route path={'/itemlist/product/:id'} element={<ItemDetailContainer />} />
+            <Route path={'/cart'} element={<CartWidget />} />
+            <Route path={'*'} element={<ErrorPage />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
       </div>
-      <Footer />
     </>
   );
 }

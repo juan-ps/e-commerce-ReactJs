@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        crim: ['Crimson Pro', 'serif']
+      }
+    },
   },
   plugins: [require("daisyui")],
 
